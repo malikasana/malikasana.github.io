@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ali Kasana – Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --green: #00ff41;
+            --green-dim: #00cc33;
+            --green-muted: #007a1f;
+            --green-faint: #003d0f;
+            --border: #00ff4133;
+            --text: #00ff41;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--green);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 13.5px;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Scanline effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,255,65,0.015) 2px,
+                rgba(0,255,65,0.015) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* HEADER */
+        header {
+            border-bottom: 1px solid var(--green-muted);
+            padding-bottom: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .prompt-line {
+            color: var(--green-muted);
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green);
+            text-shadow: 0 0 20px rgba(0,255,65,0.5);
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink 1s step-end infinite;
+            color: var(--green);
+        }
+
+        .contact-line {
+            font-size: 0.72rem;
+            color: var(--green-dim);
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.2rem 0.8rem;
+        }
+
+        .contact-line a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        .contact-line a:hover {
+            text-shadow: 0 0 8px var(--green);
+        }
+
+        .contact-line .sep {
+            color: var(--green-muted);
+        }
+
+        /* SECTIONS */
+        section {
+            margin-top: 1.8rem;
+            animation: slideUp 0.5s ease both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--green);
+            border-bottom: 1px solid var(--green-muted);
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::before {
+            content: '## ';
+            color: var(--green-muted);
+        }
+
+        /* SUMMARY */
+        .summary p {
+            color: var(--green-dim);
+            font-size: 0.85rem;
+        }
+
+        .summary p::before {
+            content: '> ';
+            color: var(--green-muted);
+        }
+
+        /* ENTRY */
+        .entry { margin-bottom: 1.3rem; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+        }
+
+        .entry-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--green);
+        }
+
+        .entry-title::before {
+            content: '$ ';
+            color: var(--green-muted);
+            font-weight: 400;
+        }
+
+        .entry-date {
+            font-size: 0.72rem;
+            color: var(--green-muted);
+        }
+
+        .entry-sub {
+            font-size: 0.78rem;
+            color: var(--green-muted);
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+        }
+
+        .entry ul { padding-left: 1.5rem; margin-top: 0.2rem; }
+        .entry ul li {
+            font-size: 0.82rem;
+            color: var(--green-dim);
+            margin-bottom: 0.15rem;
+            list-style: none;
+        }
+        .entry ul li::before {
+            content: '→ ';
+            color: var(--green-muted);
+        }
+
+        /* PROJECTS */
+        .project {
+            margin-bottom: 1.3rem;
+            padding: 0.8rem;
+            border: 1px solid var(--green-faint);
+            border-left: 2px solid var(--green-muted);
+            background: rgba(0,255,65,0.02);
+            transition: all 0.2s;
+        }
+
+        .project:hover {
+            border-color: var(--green-muted);
+            border-left-color: var(--green);
+            background: rgba(0,255,65,0.04);
+            box-shadow: 0 0 15px rgba(0,255,65,0.05);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--green);
+        }
+
+        .project-title::before {
+            content: '$ ';
+            color: var(--green-muted);
+            font-weight: 400;
+        }
+
+        .project-stack {
+            font-size: 0.68rem;
+            color: var(--green-muted);
+        }
+
+        .project ul { padding-left: 1.5rem; }
+        .project ul li {
+            font-size: 0.82rem;
+            color: var(--green-dim);
+            margin-bottom: 0.15rem;
+            list-style: none;
+        }
+        .project ul li::before {
+            content: '→ ';
+            color: var(--green-muted);
+        }
+
+        /* SKILLS */
+        .skills-grid { display: grid; gap: 0.4rem; }
+        .skill-row {
+            display: grid;
+            grid-template-columns: 12rem 1fr;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            align-items: start;
+        }
+        .skill-label {
+            color: var(--green);
+            font-weight: 600;
+        }
+        .skill-label::before {
+            content: '  ';
+        }
+        .skill-value { color: var(--green-dim); }
+
+        /* CGPA */
+        .cgpa-badge {
+            font-size: 0.7rem;
+            border: 1px solid var(--green-muted);
+            color: var(--green);
+            padding: 0.1rem 0.4rem;
+            margin-left: 0.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.68rem;
+            color: var(--green-muted);
+            border-top: 1px solid var(--green-faint);
+            padding-top: 1rem;
+        }
+
+        footer::before {
+            content: '// ';
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.5rem 1rem; font-size: 12px; }
+            header h1 { font-size: 1.3rem; }
+            .skill-row { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { animation: none; opacity: 1; }
+            body::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="prompt-line">root@malikasana:~$ cat cv.txt</div>
+    <h1>Muhammad Ali Kasana<span class="cursor">_</span></h1>
+    <div class="contact-line">
+        <span>Mirpur, AJK, Pakistan</span>
+        <span class="sep">|</span>
+        <span><a href="tel:+923142874396">+92 314 2874396</a></span>
+        <span class="sep">|</span>
+        <span><a href="mailto:malikasana2810@gmail.com">malikasana2810@gmail.com</a></span>
+        <span class="sep">|</span>
+        <span><a href="https://linkedin.com/in/malikasana" target="_blank">LinkedIn</a></span>
+        <span class="sep">|</span>
+        <span><a href="https://github.com/malikasana" target="_blank">GitHub</a></span>
+    </div>
+</header>
+
+<section class="summary">
+    <div class="section-title">Summary</div>
+    <p>Software Engineer with strong foundations in software architecture and applied Artificial Intelligence. Experienced in developing end-to-end AI prototypes integrating deep learning models, REST APIs, and mobile interfaces. Passionate about AI-driven automation and data-centric systems, seeking to contribute to innovative engineering and machine learning environments.</p>
+</section>
+
+<section>
+    <div class="section-title">Professional Experience</div>
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Xplor Group <span style="font-weight:300; font-size:0.8rem;">(UK/UAE-based)</span></span>
+            <span class="entry-date">[Mar 2024 – Aug 2024]</span>
+        </div>
+        <div class="entry-sub">// SAP Security & GRC Intern · Remote</div>
+        <ul>
+            <li>Managed SAP ECC user administration using SU01 including user creation, modification, and authorization updates.</li>
+            <li>Assisted in role design and maintenance via PFCG while adhering to Segregation of Duties (SoD) principles.</li>
+            <li>Supported risk analysis activities within SAP GRC Access Control framework.</li>
+            <li>Gained exposure to Dev/QA/Prod system landscape and transport management workflows.</li>
+            <li>Documented activities and observed client-facing security operations in enterprise SAP environments.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="section-title">Technical Projects</div>
+
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title">AutoDub – AI-Based Video Dubbing Prototype</span>
+            <span class="project-stack">[Python · Flask · Flutter · Whisper · FFmpeg · ElevenLabs]</span>
+        </div>
+        <ul>
+            <li>Architected backend pipeline for automated English-to-Urdu video dubbing system.</li>
+            <li>Built Flask REST API to orchestrate audio extraction, transcription, translation, and voice synthesis.</li>
+            <li>Integrated Whisper for speech-to-text and AI-based translation models for language conversion.</li>
+            <li>Applied source separation for vocal isolation and regenerated speech using ElevenLabs API.</li>
+            <li>Re-synchronized processed audio with original video using FFmpeg.</li>
+            <li>Achieved strong performance in controlled single-speaker, low-noise scenarios.</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title">Multi-Class Image Classification System</span>
+            <span class="project-stack">[Python · TensorFlow · PyTorch · ResNet-18 · Flask]</span>
+        </div>
+        <ul>
+            <li>Implemented transfer learning using ResNet-18 for multi-class object classification.</li>
+            <li>Trained model on Kaggle dataset achieving &gt;90% accuracy.</li>
+            <li>Exposed trained model through Flask API for real-time inference.</li>
+            <li>Integrated inference pipeline with Flutter-based mobile interface.</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title">Health Hazard Prediction Model</span>
+            <span class="project-stack">[Python · Scikit-learn · Pandas]</span>
+        </div>
+        <ul>
+            <li>Built regression models on structured dataset (~500 records) for health risk estimation.</li>
+            <li>Implemented Random Forest Regression outperforming baseline linear models.</li>
+            <li>Evaluated performance using R², RMSE, and MAE metrics.</li>
+            <li>Conducted feature preprocessing and comparative model analysis.</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title">Multi-Threaded Chat Application</span>
+            <span class="project-stack">[C# · .NET · TCP/IP]</span>
+        </div>
+        <ul>
+            <li>Developed client-server chat system using socket programming.</li>
+            <li>Implemented multi-threading to enable concurrent real-time communication.</li>
+            <li>Designed Windows Forms interface for interactive messaging.</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title">Train Booking Management System</span>
+            <span class="project-stack">[C# · .NET · Microsoft SQL Server]</span>
+        </div>
+        <ul>
+            <li>Built CRUD-based desktop application for ticket booking and user management.</li>
+            <li>Integrated Microsoft SQL Server for data storage and query execution.</li>
+            <li>Implemented booking history tracking and search functionality.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="section-title">Education</div>
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Mirpur University of Science & Technology</span>
+            <span class="entry-date">[Nov 2021 – Aug 2025]</span>
+        </div>
+        <div class="entry-sub">// B.Sc. in Software Engineering <span class="cgpa-badge">CGPA 3.55/4.00</span></div>
+        <ul>
+            <li>Artificial Intelligence, Machine Learning, Data Structures & Algorithms, Database Systems, Software Design & Analysis, Operating Systems, Computer Networks, Linear Algebra.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+        <div class="skill-row">
+            <span class="skill-label">Programming</span>
+            <span class="skill-value">Python, C++, C#, SQL, Dart, C</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">AI / ML</span>
+            <span class="skill-value">Scikit-learn, TensorFlow, PyTorch, CNN (ResNet-18), Regression Models, Model Evaluation</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Frameworks</span>
+            <span class="skill-value">Flask, Flutter, .NET Windows Forms, FFmpeg, Whisper</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Databases</span>
+            <span class="skill-value">Microsoft SQL Server</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Tools</span>
+            <span class="skill-value">Visual Studio, VS Code, Anaconda, Git, Azure, Cisco Packet Tracer</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    malikasana.github.io · Muhammad Ali Kasana · Software Engineer · EOF
+</footer>
+
+</body>
+</html>
