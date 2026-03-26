@@ -1,2 +1,3 @@
-browse -> https://malikasana.github.io/ {Programmer Theme}
-browse -> https://malikasana.github.io/cv {Professional Theme}
+To execute both deployed files in any browser:
+search url -> https://malikasana.github.io/ {Programmer Theme} <br>
+search url -> https://malikasana.github.io/cv {Professional Theme}
