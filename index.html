@@ -31,7 +31,6 @@
             animation: fadeIn 1s ease forwards;
         }
 
-        /* Scanline effect */
         body::before {
             content: '';
             position: fixed;
@@ -58,7 +57,6 @@
             50% { opacity: 0; }
         }
 
-        /* HEADER */
         header {
             border-bottom: 1px solid var(--green-muted);
             padding-bottom: 1.2rem;
@@ -102,15 +100,10 @@
             text-decoration: none;
         }
 
-        .contact-line a:hover {
-            text-shadow: 0 0 8px var(--green);
-        }
+        .contact-line a:hover { text-shadow: 0 0 8px var(--green); }
 
-        .contact-line .sep {
-            color: var(--green-muted);
-        }
+        .contact-line .sep { color: var(--green-muted); }
 
-        /* SECTIONS */
         section {
             margin-top: 1.8rem;
             animation: slideUp 0.5s ease both;
@@ -121,6 +114,7 @@
         section:nth-child(4) { animation-delay: 0.3s; }
         section:nth-child(5) { animation-delay: 0.4s; }
         section:nth-child(6) { animation-delay: 0.5s; }
+        section:nth-child(7) { animation-delay: 0.6s; }
 
         .section-title {
             font-size: 0.75rem;
@@ -133,23 +127,15 @@
             margin-bottom: 1rem;
         }
 
-        .section-title::before {
-            content: '## ';
-            color: var(--green-muted);
-        }
+        .section-title::before { content: '## '; color: var(--green-muted); }
 
-        /* SUMMARY */
         .summary p {
             color: var(--green-dim);
             font-size: 0.85rem;
         }
 
-        .summary p::before {
-            content: '> ';
-            color: var(--green-muted);
-        }
+        .summary p::before { content: '> '; color: var(--green-muted); }
 
-        /* ENTRY */
         .entry { margin-bottom: 1.3rem; }
 
         .entry-header {
@@ -166,11 +152,7 @@
             color: var(--green);
         }
 
-        .entry-title::before {
-            content: '$ ';
-            color: var(--green-muted);
-            font-weight: 400;
-        }
+        .entry-title::before { content: '$ '; color: var(--green-muted); font-weight: 400; }
 
         .entry-date {
             font-size: 0.72rem;
@@ -191,12 +173,17 @@
             margin-bottom: 0.15rem;
             list-style: none;
         }
-        .entry ul li::before {
-            content: '→ ';
-            color: var(--green-muted);
+        .entry ul li::before { content: '→ '; color: var(--green-muted); }
+
+        .badge {
+            font-size: 0.65rem;
+            border: 1px solid var(--green-muted);
+            color: var(--green);
+            padding: 0.05rem 0.35rem;
+            margin-left: 0.4rem;
+            vertical-align: middle;
         }
 
-        /* PROJECTS */
         .project {
             margin-bottom: 1.3rem;
             padding: 0.8rem;
@@ -211,6 +198,11 @@
             border-left-color: var(--green);
             background: rgba(0,255,65,0.04);
             box-shadow: 0 0 15px rgba(0,255,65,0.05);
+        }
+
+        .project.more {
+            border-left-style: dashed;
+            border-left-color: var(--green-faint);
         }
 
         .project-header {
@@ -228,11 +220,10 @@
             color: var(--green);
         }
 
-        .project-title::before {
-            content: '$ ';
-            color: var(--green-muted);
-            font-weight: 400;
-        }
+        .project-title::before { content: '$ '; color: var(--green-muted); font-weight: 400; }
+
+        .project-title a { color: var(--green); text-decoration: none; }
+        .project-title a:hover { text-shadow: 0 0 8px var(--green); }
 
         .project-stack {
             font-size: 0.68rem;
@@ -246,30 +237,42 @@
             margin-bottom: 0.15rem;
             list-style: none;
         }
-        .project ul li::before {
-            content: '→ ';
+        .project ul li::before { content: '→ '; color: var(--green-muted); }
+
+        .project-links {
+            margin-top: 0.4rem;
+            font-size: 0.68rem;
             color: var(--green-muted);
         }
 
-        /* SKILLS */
+        .project-links a {
+            color: var(--green-dim);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        .project-links a:hover { color: var(--green); text-shadow: 0 0 6px var(--green); }
+
+        .more-note {
+            font-size: 0.8rem;
+            color: var(--green-muted);
+            padding-left: 0;
+        }
+
+        .more-note a { color: var(--green-dim); text-decoration: none; }
+        .more-note a:hover { color: var(--green); }
+
         .skills-grid { display: grid; gap: 0.4rem; }
         .skill-row {
             display: grid;
-            grid-template-columns: 12rem 1fr;
+            grid-template-columns: 13rem 1fr;
             gap: 0.5rem;
             font-size: 0.82rem;
             align-items: start;
         }
-        .skill-label {
-            color: var(--green);
-            font-weight: 600;
-        }
-        .skill-label::before {
-            content: '  ';
-        }
+        .skill-label { color: var(--green); font-weight: 600; }
         .skill-value { color: var(--green-dim); }
 
-        /* CGPA */
         .cgpa-badge {
             font-size: 0.7rem;
             border: 1px solid var(--green-muted);
@@ -278,7 +281,6 @@
             margin-left: 0.5rem;
         }
 
-        /* FOOTER */
         footer {
             margin-top: 2.5rem;
             text-align: center;
@@ -288,9 +290,7 @@
             padding-top: 1rem;
         }
 
-        footer::before {
-            content: '// ';
-        }
+        footer::before { content: '// '; }
 
         @media (max-width: 600px) {
             body { padding: 1.5rem 1rem; font-size: 12px; }
@@ -319,22 +319,41 @@
         <span><a href="https://www.linkedin.com/in/muhammad-ali-7156533a7" target="_blank">LinkedIn</a></span>
         <span class="sep">|</span>
         <span><a href="https://github.com/malikasana" target="_blank">GitHub</a></span>
+        <span class="sep">|</span>
+        <span><a href="https://dev.to/malikasana" target="_blank">Dev.to</a></span>
+        <span class="sep">|</span>
+        <span><a href="https://x.com/malikasana2810" target="_blank">X</a></span>
     </div>
 </header>
 
 <section class="summary">
     <div class="section-title">Summary</div>
-    <p>Software Engineer with strong foundations in software architecture and applied Artificial Intelligence. Experienced in developing end-to-end AI prototypes integrating deep learning models, REST APIs, and mobile interfaces. Passionate about AI-driven automation and data-centric systems, seeking to contribute to innovative engineering and machine learning environments.</p>
+    <p>Software Engineer with deep interest in applied AI and end-to-end system design. Builds complete products independently — from architecture and data pipelines to mobile interfaces and cloud deployment. Published two open-source Python libraries on PyPI. Reads research papers to understand modern AI architectures and translates them into working implementations. Seeking roles at the intersection of software engineering and machine learning.</p>
 </section>
 
 <section>
-    <div class="section-title">Professional Experience</div>
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Moboroid <span style="font-weight:300; font-size:0.8rem;">(Mirpur, AJK)</span></span>
+            <span class="entry-date">[Mar 2026 – Present]</span>
+        </div>
+        <div class="entry-sub">// Software Engineer Apprentice · PSEB Apprenticeship Program, Ministry of IT &amp; Telecom, Government of Pakistan</div>
+        <ul>
+            <li>Selected for a government-backed 6-month apprenticeship placing IT graduates in PSEB-registered tech companies.</li>
+            <li>Built and shipped multiple end-to-end AI products including RAG systems, ML pipelines, mobile apps, and published Python libraries.</li>
+            <li>Designed multi-service architectures using Flutter, FastAPI, Docker, ChromaDB, and Gemini API within the first 6 weeks.</li>
+            <li>Independently managed project planning, architecture decisions, implementation, and deployment across all work.</li>
+        </ul>
+    </div>
+
     <div class="entry">
         <div class="entry-header">
             <span class="entry-title">Xplor Group <span style="font-weight:300; font-size:0.8rem;">(UK/UAE-based)</span></span>
             <span class="entry-date">[Mar 2024 – Aug 2024]</span>
         </div>
-        <div class="entry-sub">// SAP Security & GRC Intern · Remote</div>
+        <div class="entry-sub">// SAP Security &amp; GRC Intern · Remote</div>
         <ul>
             <li>Managed SAP ECC user administration using SU01 including user creation, modification, and authorization updates.</li>
             <li>Assisted in role design and maintenance via PFCG while adhering to Segregation of Duties (SoD) principles.</li>
@@ -350,80 +369,106 @@
 
     <div class="project">
         <div class="project-header">
-            <span class="project-title">AutoDub – AI-Based Video Dubbing Prototype</span>
-            <span class="project-stack">[Python · Flask · Flutter · Whisper · FFmpeg · ElevenLabs]</span>
+            <span class="project-title"><a href="https://github.com/malikasana/smartgate-ai" target="_blank">SmartGate</a><span class="badge">PyPI</span></span>
+            <span class="project-stack">[Python · FastAPI · Gemini / OpenAI / DeepSeek]</span>
         </div>
         <ul>
-            <li>Architected backend pipeline for automated English-to-Urdu video dubbing system.</li>
-            <li>Built Flask REST API to orchestrate audio extraction, transcription, translation, and voice synthesis.</li>
-            <li>Integrated Whisper for speech-to-text and AI-based translation models for language conversion.</li>
-            <li>Applied source separation for vocal isolation and regenerated speech using ElevenLabs API.</li>
-            <li>Re-synchronized processed audio with original video using FFmpeg.</li>
-            <li>Achieved strong performance in controlled single-speaker, low-noise scenarios.</li>
+            <li>Designed and published an AI-powered semantic firewall for databases — replaces identity-based auth with data-quality validation.</li>
+            <li>Built a 6-layer processing pipeline: IP rate limiting → queue control → size check → hash deduplication → AI semantic validation → database write.</li>
+            <li>Supports Gemini, DeepSeek, and OpenAI with automatic model fallback chain; includes prompt injection protection.</li>
+            <li>Installable via pip install smartgate-ai; includes admin REST endpoints and persistent IP ban storage.</li>
         </ul>
+        <div class="project-links">
+            <a href="https://github.com/malikasana/smartgate-ai" target="_blank">github →</a>
+            <a href="https://pypi.org/project/smartgate-ai" target="_blank">pypi →</a>
+        </div>
     </div>
 
     <div class="project">
         <div class="project-header">
-            <span class="project-title">Multi-Class Image Classification System</span>
-            <span class="project-stack">[Python · TensorFlow · PyTorch · ResNet-18 · Flask]</span>
+            <span class="project-title"><a href="https://github.com/malikasana/equityiq" target="_blank">EquityIQ — Market Cap Intelligence</a></span>
+            <span class="project-stack">[Python · XGBoost · Scikit-learn · Gradio · BeautifulSoup]</span>
         </div>
         <ul>
-            <li>Implemented transfer learning using ResNet-18 for multi-class object classification.</li>
-            <li>Trained model on Kaggle dataset achieving &gt;90% accuracy.</li>
-            <li>Exposed trained model through Flask API for real-time inference.</li>
-            <li>Integrated inference pipeline with Flutter-based mobile interface.</li>
+            <li>Built two end-to-end ML systems: cap tier classifier (10,765 companies, 81 countries) and growth forecaster (30 years of history, 500 companies).</li>
+            <li>Scraped 285,599 records using requests + BeautifulSoup with 99.6% success rate; engineered features with log transforms and derived ratios.</li>
+            <li>Random Forest classifier: 77% accuracy, Macro F1 = 0.79. XGBoost growth model correctly predicted 9/10 AI boom companies from pre-2020 data.</li>
+            <li>Deployed live interactive demo on Hugging Face Spaces with Gradio.</li>
         </ul>
+        <div class="project-links">
+            <a href="https://github.com/malikasana/equityiq" target="_blank">github →</a>
+            <a href="https://huggingface.co/spaces/malikasana/equityiq" target="_blank">live demo →</a>
+        </div>
     </div>
 
     <div class="project">
         <div class="project-header">
-            <span class="project-title">Health Hazard Prediction Model</span>
-            <span class="project-stack">[Python · Scikit-learn · Pandas]</span>
+            <span class="project-title"><a href="https://github.com/malikasana/pakconstitution-ai" target="_blank">PakConstitution AI</a></span>
+            <span class="project-stack">[Python · FastAPI · ChromaDB · Flutter · Docker · Gemini]</span>
         </div>
         <ul>
-            <li>Built regression models on structured dataset (~500 records) for health risk estimation.</li>
-            <li>Implemented Random Forest Regression outperforming baseline linear models.</li>
-            <li>Evaluated performance using R², RMSE, and MAE metrics.</li>
-            <li>Conducted feature preprocessing and comparative model analysis.</li>
+            <li>Built a RAG-powered constitutional assistant — plain English questions, answers with exact article citations and amendment history.</li>
+            <li>Embedded 666 constitutional chunks + 114 amendment records using sentence-transformers; vector search via ChromaDB.</li>
+            <li>Full-stack: Flutter frontend + FastAPI RAG pipeline + ChromaDB, all containerised with Docker Compose.</li>
+            <li>Implements conversation memory via summarisation; cross-platform UI with dark/light themes.</li>
         </ul>
+        <div class="project-links">
+            <a href="https://github.com/malikasana/pakconstitution-ai" target="_blank">github →</a>
+        </div>
     </div>
 
     <div class="project">
         <div class="project-header">
-            <span class="project-title">Multi-Threaded Chat Application</span>
-            <span class="project-stack">[C# · .NET · TCP/IP]</span>
+            <span class="project-title"><a href="https://github.com/malikasana/gemini-flux" target="_blank">gemini-flux</a><span class="badge">PyPI</span></span>
+            <span class="project-stack">[Python · FastAPI · Docker]</span>
         </div>
         <ul>
-            <li>Developed client-server chat system using socket programming.</li>
-            <li>Implemented multi-threading to enable concurrent real-time communication.</li>
-            <li>Designed Windows Forms interface for interactive messaging.</li>
+            <li>Published a token-aware Gemini API key manager — handles rotation, cooldowns, and daily resets across N keys automatically.</li>
+            <li>Uses sliding window token tracking to calculate exact per-key cooldowns; implements model exhaustion chain (Pro → Flash → Flash-Lite → preview).</li>
+            <li>Unlocks 10,800+ free requests/day across 8 keys; available as pip library or Docker microservice.</li>
+            <li>Used internally by PakConstitution AI and VideoDub.</li>
         </ul>
+        <div class="project-links">
+            <a href="https://github.com/malikasana/gemini-flux" target="_blank">github →</a>
+            <a href="https://pypi.org/project/gemini-flux" target="_blank">pypi →</a>
+        </div>
     </div>
 
     <div class="project">
         <div class="project-header">
-            <span class="project-title">Train Booking Management System</span>
-            <span class="project-stack">[C# · .NET · Microsoft SQL Server]</span>
+            <span class="project-title"><a href="https://github.com/malikasana/videodub" target="_blank">VideoDub — Automatic Video Dubbing</a></span>
+            <span class="project-stack">[Python · FastAPI · Flutter · Dart]</span>
         </div>
         <ul>
-            <li>Built CRUD-based desktop application for ticket booking and user management.</li>
-            <li>Integrated Microsoft SQL Server for data storage and query execution.</li>
-            <li>Implemented booking history tracking and search functionality.</li>
+            <li>Architected a 3-tier dubbing system: Flutter mobile client, FastAPI backend with job queue, and dedicated AI processing server.</li>
+            <li>Designed pipeline architecture with orchestrator threads per job — stages: audio separation, STT, translation, TTS, re-sync.</li>
+            <li>Built full Flutter frontend with upload, library, player (original/dubbed toggle), background polling, and push notifications.</li>
+            <li>All three services communicate over HTTP and can run on separate machines; includes fake simulation mode for end-to-end testing.</li>
         </ul>
+        <div class="project-links">
+            <a href="https://github.com/malikasana/videodub" target="_blank">github →</a>
+        </div>
     </div>
+
+    <div class="project more">
+        <div class="project-header">
+            <span class="project-title" style="font-weight:300;">more_projects/</span>
+        </div>
+        <p class="more-note">Flora·ID (flower classifier, ResNet-34, 98.5% acc) · Voxar (voice recorder + custom Whisper built from scratch in PyTorch) · and others — <a href="https://github.com/malikasana" target="_blank">github.com/malikasana</a></p>
+    </div>
+
 </section>
 
 <section>
     <div class="section-title">Education</div>
     <div class="entry">
         <div class="entry-header">
-            <span class="entry-title">Mirpur University of Science & Technology</span>
+            <span class="entry-title">Mirpur University of Science &amp; Technology</span>
             <span class="entry-date">[Nov 2021 – Aug 2025]</span>
         </div>
         <div class="entry-sub">// B.Sc. in Software Engineering <span class="cgpa-badge">CGPA 3.55/4.00</span></div>
         <ul>
-            <li>Artificial Intelligence, Machine Learning, Data Structures & Algorithms, Database Systems, Software Design & Analysis, Operating Systems, Computer Networks, Linear Algebra.</li>
+            <li>Artificial Intelligence, Machine Learning, Data Structures &amp; Algorithms, Database Systems, Software Design &amp; Analysis, Operating Systems, Computer Networks, Linear Algebra.</li>
         </ul>
     </div>
 </section>
@@ -432,24 +477,32 @@
     <div class="section-title">Technical Skills</div>
     <div class="skills-grid">
         <div class="skill-row">
-            <span class="skill-label">Programming</span>
-            <span class="skill-value">Python, C++, C#, SQL, Dart, C</span>
+            <span class="skill-label">Languages</span>
+            <span class="skill-value">Python, Dart, C++, C#, SQL, C</span>
         </div>
         <div class="skill-row">
             <span class="skill-label">AI / ML</span>
-            <span class="skill-value">Scikit-learn, TensorFlow, PyTorch, CNN (ResNet-18), Regression Models, Model Evaluation</span>
+            <span class="skill-value">PyTorch, Scikit-learn, XGBoost, TensorFlow, ResNet, Whisper, RAG, LLM orchestration, Prompt Engineering, Sentence Transformers</span>
         </div>
         <div class="skill-row">
-            <span class="skill-label">Frameworks</span>
-            <span class="skill-value">Flask, Flutter, .NET Windows Forms, FFmpeg, Whisper</span>
+            <span class="skill-label">Frameworks &amp; Tools</span>
+            <span class="skill-value">Flutter, FastAPI, Flask, Docker, ChromaDB, Gradio, Hugging Face Spaces, FFmpeg</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">APIs &amp; Services</span>
+            <span class="skill-value">Gemini API, Groq API, OpenAI API, ElevenLabs, PyPI publishing</span>
         </div>
         <div class="skill-row">
             <span class="skill-label">Databases</span>
-            <span class="skill-value">Microsoft SQL Server</span>
+            <span class="skill-value">ChromaDB, Microsoft SQL Server, Firebase</span>
         </div>
         <div class="skill-row">
-            <span class="skill-label">Tools</span>
-            <span class="skill-value">Visual Studio, VS Code, Anaconda, Git, Azure, Cisco Packet Tracer</span>
+            <span class="skill-label">Engineering</span>
+            <span class="skill-value">End-to-end system design, multi-service architecture, REST API design, web scraping, feature engineering, model evaluation</span>
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Other</span>
+            <span class="skill-value">Git, VS Code, Kaggle, Anaconda, SAP ECC / GRC (SU01, PFCG)</span>
         </div>
     </div>
 </section>
